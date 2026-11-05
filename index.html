@@ -229,7 +229,7 @@ async function loadPanelData() {
         document.getElementById("appVersion").innerText = "Нұсқасы: " + data.app_version;
         
         // Егер анти-чит қосулы болса, консольге жазу
-        if (data.anti_cheat === "enabled") {
+        if (data.anti_cheat_status === "enabled") {
             console.log("Анти-чит жүйесі белсенді.");
         }
         
