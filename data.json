@@ -1,0 +1,10 @@
+{
+  "panel_status": "active",
+  "app_version": "1.0.4",
+  "features": {
+    "wallhack": true,
+    "aimbot": false,
+    "speedhack": true
+  },
+  "anti_cheat_status": "secured"
+}
