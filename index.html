@@ -140,12 +140,12 @@
     <!-- АВТОМАТТЫ СТАТУС БӨЛІМІ -->
     <div class="status-box">
         <div id="panelStatus" style="font-weight: bold; font-size: 16px; color: #ffcc00; margin-bottom: 5px;">Жүктелуде...</div>
-        <div id="appVersion" style="color: #8b949e;">Нұсқасы: 1.0.4</div>
+        <div id="appVersion" style="color: #8b949e;">Нұсқасы: 1.1</div>
     </div>
 
     <script>
        
-        const jsonUrl = "https://github.com/Erasyl03/ERA_PANEL/blob/main/data.json";
+        const jsonUrl = "https://erasyl03.github.io/ERA_PANEL/";
 
         // Аты мен парольді тексеру функциясы (Аты: ERA, Пароль: 1964)
         function verifyLogin() {
@@ -178,9 +178,9 @@
                     window.Android.sendDataToApp(JSON.stringify(data));
                 }
                 
-            } catch (error) {
-                console.error("JSON оқылмады:", error);
-                document.getElementById("panelStatus").innerText = "Қате: JSON оқылмады";
+            } catch (data) {
+                console.data(" data);
+                document.getElementById("panelStatus").innerText =";
                 document.getElementById("panelStatus").style.color = "#f85149";
             }
         }
