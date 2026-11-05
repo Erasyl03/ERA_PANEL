@@ -221,7 +221,10 @@ async function loadPanelData() {
     try {
         const response = await fetch(jsonUrl);
         const data = await response.json();
-        
+
+        if (window.Android && window.Android.sendDataToApp) {
+    window.Android.sendDataToApp(JSON.stringify(data));
+}
         console.log("JSON мәліметтері сәтті оқылды:", data);
         
         // JSON-дағы мәліметтерді экрандағы орындарға автоматты түрде шығару
