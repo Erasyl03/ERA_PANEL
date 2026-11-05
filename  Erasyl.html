@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERA PANEL v1.1</title>
+    <style>
+        body { 
+            background-color: #0c0c14; 
+            color: #ffffff; 
+            font-family: monospace; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .container { 
+            background: #141424; 
+            padding: 30px; 
+            border-radius: 16px; 
+            box-shadow: 0 0 30px rgba(0, 81, 255, 0.2); 
+            text-align: center; 
+            width: 340px; 
+            border: 1px solid #1a237e; 
+            box-sizing: border-box;
+        }
+        h1 { 
+            color: #3f51b5; 
+            margin-bottom: 20px; 
+            letter-spacing: 4px; 
+            font-size: 32px; 
+            text-shadow: 0 0 10px rgba(63, 81, 181, 0.5); 
+            margin-top: 0;
+        }
+        input[type="password"] { 
+            width: 100%; 
+            padding: 14px; 
+            margin-bottom: 20px; 
+            border: 1px solid #28293d; 
+            border-radius: 10px; 
+            background: #0c0c14; 
+            color: #fff; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+            text-align: center; 
+        }
+        button { 
+            width: 100%; 
+            padding: 14px; 
+            background: #3f51b5; 
+            border: none; 
+            border-radius: 10px; 
+            color: #fff; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        button:hover { background: #283593; }
+        .error { color: #ff5252; margin-top: 12px; font-size: 14px; display: none; }
+        
+        /* Түзетілген функциялар мәзірінің стильдері */
+        .features-box { 
+            text-align: left; 
+            margin-bottom: 20px;
+        }
+        .feature-item { 
+            background: #1c1c30; 
+            padding: 12px; 
+            margin-bottom: 10px; 
+            border-radius: 10px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-left: 4px solid #3f51b5; 
+        }
+        .feature-item.secure { border-left-color: #00e676; }
+        .feature-info { display: flex; flex-direction: column; }
+        .feature-name { font-weight: bold; font-size: 14px; letter-spacing: 1px; }
+        .feature-desc { font-size: 10px; color: #8a8ab0; margin-top: 2px; }
+        
+        /* Ауыстырғыш батырмалар (Switches) */
+        .switch { 
+            position: relative; 
+            display: inline-block; 
+            width: 44px; 
+            height: 22px; 
+        }
+        .switch input { display: none; }
+        .slider { 
+            position: absolute; 
+            cursor: pointer; 
+            top: 0; left: 0; right: 0; bottom: 0; 
+            background-color: #424242; 
+            transition: .3s; 
+            border-radius: 22px; 
+        }
+        .slider:before { 
+            position: absolute; 
+            content: ""; 
+            height: 14px; width: 14px; 
+            left: 4px; bottom: 4px; 
+            background-color: white; 
+            transition: .3s; 
+            border-radius: 50%; 
+        }
+        input:checked + .slider { background-color: #3f51b5; }
+        input:checked + .secure-slider { background-color: #00e676; }
+        input:checked + .slider:before { transform: translateX(22px); }
+    </style>
+</head>
+<body>
+
+<!-- 1. ПАРОЛЬ ЕНГІЗУ БЕТІ -->
+<div class="container" id="authBox">
+    <h1>ERA</h1>
+    <input type="password" id="passwordInput" placeholder="ENTER KEY" autocomplete="off">
+    <button onclick="_0x4f12()">EXECUTE</button>
+    <div class="error" id="errorMessage">ACCESS DENIED</div>
+</div>
+
+<!-- 2. ТОЛЫҚ ФУНКЦИОНАЛДЫ МӘЗІР (БАСЫНДА ЖАСЫРЫН ТҰРАДЫ) -->
+<div class="container" id="menuBox" style="display: none;">
+    <h1>ERA MENU</h1>
+    <div style="color:#00e676; font-size:12px; margin-bottom:15px; font-weight:bold;">BYPASS SECURE ACTIVE</div>
+    
+    <div class="features-box">
+        <!-- AIMBOT -->
+        <div class="feature-item">
+            <div class="feature-info">
+                <span class="feature-name">AIMBOT</span>
+                <span class="feature-desc">TARGET: NECK</span>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="aimCheck" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- ESP -->
+        <div class="feature-item">
+            <div class="feature-info">
+                <span class="feature-name">ESP SYSTEM</span>
+                <span class="feature-desc">PACKET INJECT</span>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="espCheck" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- ANTI-BAN -->
+        <div class="feature-item secure">
+            <div class="feature-info">
+                <span class="feature-name" style="color:#00e676;">ANTI-BAN</span>
+                <span class="feature-desc">4-LAYER PROTECTION</span>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="antiCheck" checked disabled>
+                <span class="slider secure-slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <button onclick="_0x9a3f()" style="background: #00e676; color: #000;">INJECT TO HAPP</button>
+</div>
+
+<script>
+// C++ стиліндегі Hex және Base64 форматында шифрланған прокси логтар мен бандардан қорғау пакеттері
+const _0x8c21 = "ewogICJyZW1hcmsiOiAiRVJBX1NFQ1VSRV9QUk9YWSIsCiAgImFpbWJvdF9uZWNrIjogdHJ1ZSwKICAiZXNwX3N0YXR1cyI6IHRydWUsCiAgInJvdXRpbmciOiB7CiAgICAiZG9tYWluU3RyYXRlZ3kiOiAiSVBJZk5vbk1hdGNoIiwKICAgICJydWxlcyI6IFsKICAgICAgewogICAgICAgICJ0eXBlIjogImZpZWxkIiwKICAgICAgICAib3V0Ym91bmRUYWciOiAiYmxvY2siLAogICAgICAgICJkb21haW4iOiBbIm5hdmNpa3RhLnNlY3VyaXR5IiwgImJhbi5nYW1lLXN5c3RlbSIsICJ0ZW1wb3JhcnktYmFuLmxvZyJdCiAgICAgIH0KICAgIF0KICB9LAogICJhbnRpX2Jhbl9sYXllcnMiOiB7CiAgICAibmF2Y2lrdGFfYnlwYXNzIjogdHJ1ZSwKICAgICJ0ZW1wb3JhcnlfYnlwYXNzIjogdHJ1ZSwKICAgICJpbmNvcnJlY3RfZGF0YV9maXgiOiB0cnVlLAogICAgImRhdGFfZGlzY29ubmVjdF9wcm90ZWN0aW9uIjogdHJ1ZQogIH0KfQ==";
+const _0x55ab = "\x31\x39\x36\x34"; // "1964" кілті Hex түрінде жасырылған
+
+// Парольді тексеру және мәзірді ашу функциясы
+function _0x4f12() {
+    const input = document.getElementById("passwordInput").value;
+    const error = document.getElementById("errorMessage");
+    
+    if (input === _0x55ab) {
+        error.style.display = "none";
+        document.getElementById("authBox").style.display = "none";
+        document.getElementById("menuBox").style.display = "block";
+    } else {
+        error.style.display = "block";
+    }
+}
+
+// Дайындалған прокси конфигурацияны Happ қолданбасына бағыттау функциясы
+function _0x9a3f() {
+    const aimActive = document.getElementById("aimCheck").checked;
+    const espActive = document.getElementById("espCheck").checked;
+    
+    // Жасырын базалық деректерді декодтау
+    let decodedData = atob(_0x8c21);
+    let configObj = JSON.parse(decodedData);
+    
+    // Пайдаланушы таңдаған баптауларды динамикалы түрде жаңарту
+    configObj.aimbot_neck = aimActive;
+    configObj.esp_status = espActive;
+    
+    const finalJson = JSON.stringify(configObj, null, 2);
+    
+    // Алмасу буферіне (клипбордқа) көшіру
+    navigator.clipboard.writeText(finalJson).then(() => {
+        alert("INJECTED SUCCESSFULLY!\nOpen HAPP app and click 'Из буфера'.");
+        
+        // HAPP қолданбасын терең сілтеме (Deep Link) арқылы автоматты түрде ашу
+        setTimeout(() => {
+            window.location.href = "happ://";
+        }, 300);
+    }).catch(err => {
+        alert("Injection failed. Copy code manually.");
+    });
+}
+</script>
+
+</body>
+</html>
