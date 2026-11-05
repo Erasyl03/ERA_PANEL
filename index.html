@@ -214,26 +214,22 @@ function _0x9a3f() {
 }
 </script>
 <script>
-
-const jsonUrl = "https://github.io";
+const jsonUrl = "https://erasyl03.github.io/ERA_PANEL/";
 
 async function loadPanelData() {
     try {
         const response = await fetch(jsonUrl);
         const data = await response.json();
-
-        if (window.Android && window.Android.sendDataToApp) {
-    window.Android.sendDataToApp(JSON.stringify(data));
-}
+        
         console.log("JSON мәліметтері сәтті оқылды:", data);
         
-        // JSON-дағы мәліметтерді экрандағы орындарға автоматты түрде шығару
+        // Экрандағы мәтіндерді жаңарту
         document.getElementById("panelStatus").innerText = "Панель күйі: " + data.panel_status;
         document.getElementById("appVersion").innerText = "Нұсқасы: " + data.app_version;
         
-        // Егер анти-чит қосулы болса, консольге жазу
-        if (data.anti_cheat_status === "enabled") {
-            console.log("Анти-чит жүйесі белсенді.");
+        // Бағдарламаға (Happ) мәліметті автоматты лақтыру
+        if (window.Android && window.Android.sendDataToApp) {
+            window.Android.sendDataToApp(JSON.stringify(data));
         }
         
     } catch (error) {
@@ -241,7 +237,6 @@ async function loadPanelData() {
     }
 }
 
-// Сайт ашылған бойда функцияны іске қосамыз
 window.onload = loadPanelData;
 </script>
 
