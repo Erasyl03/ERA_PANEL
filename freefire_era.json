@@ -1,0 +1,31 @@
+{
+  "panel_config": {
+    "version": "2.0_Era",
+    "target_package": "com.dts.freefireth",
+    "bypass_level": "4_LEVEL_STRICT"
+  },
+  "anticheat_bypass": {
+    "block_garena_logs": true,
+    "mute_crashlytics": true,
+    "fake_device_id": true,
+    "bypass_rules": [
+      "com.garena.msdk.request.block",
+      "://garena.com.report.drop",
+      "anticheat.freefire.detection.bypass"
+    ]
+  },
+  "aimbot_framework": {
+    "status": "ENABLED",
+    "aim_location": "NECK",
+    "fov_radius": 360,
+    "auto_drag_shot": true,
+    "touch_sensitivity_multiplier": 3.5
+  },
+  "esp_framework": {
+    "status": "ENABLED",
+    "esp_lines": true,
+    "esp_box_3d": true,
+    "distance_counter": true,
+    "fps_stabilizer": "120HZ_FORCE"
+  }
+}
